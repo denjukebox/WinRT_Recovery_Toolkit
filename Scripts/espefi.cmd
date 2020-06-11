@@ -1,0 +1,2 @@
+MOUNTVOL S: /S
+XCOPY /S D:\EFIESP\* S:\
