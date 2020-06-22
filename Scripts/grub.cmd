@@ -1,4 +1,4 @@
 MOUNTVOL S: /S
-XCOPY /S D:\GRUB\* S:\
+XCOPY /S D:\LINUX\GRUB\* S:\
 
 BCDEDIT /SET {bootmgr} path \BOOT.EFI

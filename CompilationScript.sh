@@ -10,6 +10,8 @@ IMAGE_VARIANT=$3
 IMAGE_NAME="${DEVICE_NAME}_WinRT_${WIN_VERSION}_${IMAGE_VARIANT}"
 IMAGE_LOCATION="ISO/${IMAGE_NAME}.iso"
 
+echo $IMAGE_NAME
+
 LODEV=$(sudo losetup -f)
 fallocate -l 4G ${IMAGE_LOCATION}
 sudo -s <<EOF
@@ -17,10 +19,9 @@ losetup --partscan --show --find "${IMAGE_LOCATION}"
 (echo o; echo n; echo p; echo 1; echo ""; echo ""; echo "t"; echo "b"; echo w; echo q) | fdisk $(echo $LODEV)
 mkfs.vfat -n "RECOVERY" -M 0xF9 -v "${LODEV}p1"
 mount "${LODEV}p1" mount
-unzip "Resources/RecoveryFS/${DEVICE_NAME}/WinRT_80_${IMAGE_VARIANT}.zip" -d mount
-cp -r -v Resources/Windows/SecureBoot mount
-cp -r -v Resources/Windows/EFIESP mount
-cp -r -v Resources/Linux/GRUB mount
+unzip "Resources/RecoveryFS/${DEVICE_NAME}/WinRT_${WIN_VERSION}_${IMAGE_VARIANT}.zip" -d mount
+cp -r -v Resources/Windows mount
+cp -r -v Resources/Linux mount
 cp -r -v Scripts mount
 umount mount
 losetup -d $(echo $LODEV)
