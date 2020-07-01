@@ -1,0 +1,3 @@
+REM === 0. CLEAN EXISTING DISK ===========
+SELECT DISK 0
+CLEAN

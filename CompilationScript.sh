@@ -13,7 +13,7 @@ IMAGE_LOCATION="ISO/${IMAGE_NAME}.iso"
 echo $IMAGE_NAME
 
 LODEV=$(sudo losetup -f)
-fallocate -l 4G ${IMAGE_LOCATION}
+fallocate -l 500MiB ${IMAGE_LOCATION}
 sudo -s <<EOF
 losetup --partscan --show --find "${IMAGE_LOCATION}"
 (echo o; echo n; echo p; echo 1; echo ""; echo ""; echo "t"; echo "b"; echo w; echo q) | fdisk $(echo $LODEV)
@@ -23,7 +23,9 @@ unzip "Resources/RecoveryFS/${DEVICE_NAME}/WinRT_${WIN_VERSION}_${IMAGE_VARIANT}
 cp -r -v Resources/Windows mount
 cp -r -v Resources/Linux mount
 cp -r -v Scripts mount
+cp -v menu.cmd  mount
 umount mount
 losetup -d $(echo $LODEV)
 EOF
 exit 0
+#unzip "Resources/Installs/WinRT_${WIN_VERSION}_${IMAGE_VARIANT}.zip" -d mount/sources
