@@ -1,2 +1,2 @@
 MOUNTVOL S: /S
-XCOPY /i /S D:\EFI\* S:\EFI
+XCOPY /i /S %1\EFI\* S:\EFI

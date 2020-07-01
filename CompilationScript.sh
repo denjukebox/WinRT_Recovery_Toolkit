@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash %EXEC_DRIVE_LETTER%
 
 # Name of device recovery image for resources folderDEFAULT Surface_RT1
 DEVICE_NAME=$1

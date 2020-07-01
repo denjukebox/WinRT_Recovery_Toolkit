@@ -1,6 +1,6 @@
-COPY /Y D:\WINDOWS\SecureBoot\SecureBootDebug.efi S:\EFI\Microsoft\Boot\SecurebootDebug.efi
+COPY /Y %1\WINDOWS\SecureBoot\SecureBootDebug.efi S:\EFI\Microsoft\Boot\SecurebootDebug.efi
 
-COPY /Y D:\WINDOWS\SecureBoot\SecureBootDebugPolicy.p7b S:\SecureBootDebugPolicy.p7b
+COPY /Y %1\WINDOWS\SecureBoot\SecureBootDebugPolicy.p7b S:\SecureBootDebugPolicy.p7b
 
 SET VAR={9809d174-88ef-11e1-8346-00155de8c610}
 
